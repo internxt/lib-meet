@@ -1171,9 +1171,9 @@ export default class ChatRoom extends Listenable {
         });
 
         if (this.encyptionKey) {
-            const payload = typeof message === 'object' ? JSON.stringify(message) : message;
+            const plaintext = message;
 
-            message = encryptSymmetricallySync(payload, this.encyptionKey);
+            message = encryptSymmetricallySync(plaintext, this.encyptionKey);
         }
 
         // We are adding the message in a packet extension. If this element

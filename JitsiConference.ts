@@ -4098,7 +4098,9 @@ export default class JitsiConference extends Listenable {
                 }
 
                 try {
-                    messageToSend = JSON.stringify(messageToSend);
+                    if (typeof messageToSend !== 'string') {
+                        messageToSend = JSON.stringify(messageToSend);
+                    }
                 } catch (e) {
                     logger.error('Can not send a message, stringify failed: ', e);
 
