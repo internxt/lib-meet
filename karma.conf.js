@@ -37,10 +37,13 @@ module.exports = function(config) {
         files: [
             {
                 included: false,
-                nocache: false,
-                pattern: 'models/RTC/*',
+                served: true, 
+                pattern: 'models/RTC/**/*',
+            },
+            {
+                included: false,
                 served: true,
-                watched: false
+                pattern: 'node_modules/onnxruntime-web/dist/**/*',
             },
             'node_modules/core-js/index.js',
             './modules/**/*.spec.ts',
@@ -79,6 +82,12 @@ module.exports = function(config) {
 
         // web server port
         port: 9876,
+
+        // Proxies
+        proxies: {
+            "/libs/dist/": "/base/node_modules/onnxruntime-web/dist/",
+            "/libs/models/": "/base/models/RTC/"
+        },
 
         // preprocess matching files before serving them to the browser
         // available preprocessors:

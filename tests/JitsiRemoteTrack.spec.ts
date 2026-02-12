@@ -1,8 +1,8 @@
-import JitsiRemoteTrack from './JitsiRemoteTrack';
-import { MediaType } from '../../service/RTC/MediaType';
-import { VideoType } from '../../service/RTC/VideoType';
+import JitsiRemoteTrack from '../modules/RTC/JitsiRemoteTrack';
+import { MediaType } from '../service/RTC/MediaType';
+import { VideoType } from '../service/RTC/VideoType';
 const ort = require('onnxruntime-web');
-const jrt = require('./JitsiRemoteTrack');
+const jrt = require('../modules/RTC/JitsiRemoteTrack');
 
 describe("Lets test the ONNX decoding model and routine performance",()=>{
 
@@ -19,7 +19,7 @@ describe("Lets test the ONNX decoding model and routine performance",()=>{
         for(let i=0; i< width*height*channels;i++){
             dummyArray[i] = (i % 256);
         }
-        const dummyTensor = new ort.Tensor("float32",dummyArray,[1,channels,height,width]);
+        const dummyTensor = new ort.Tensor("float32",dummyArray,[ 1, height, width, channels ]);
         const inputDecoder = { 
             input: dummyTensor
         };
