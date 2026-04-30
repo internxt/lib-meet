@@ -1,10 +1,10 @@
 {
-  "name": "lib-jitsi-meet",
-  "version": "0.0.21",
+  "name": "lib-meet",
+  "version": "1.0.0",
   "description": "JS library for accessing Jitsi server side deployments",
   "repository": {
     "type": "git",
-    "url": "git://github.com/jitsi/lib-jitsi-meet"
+    "url": "git://github.com/jitsi/lib-meet"
   },
   "keywords": [
     "jingle",
@@ -89,7 +89,7 @@
     "watch": "npm run gen-version && webpack --config webpack.config.js --watch --mode development"
   },
   "browser": {
-    "dist/umd/lib-jitsi-meet.min.js": "dist/umd/lib-jitsi-meet.min.js",
+    "dist/umd/lib-meet.min.js": "dist/umd/lib-meet.min.js",
     "vodozemac.wasm": "dist/umd/vodozemac.wasm"
   },
   "module": "dist/esm/JitsiMeetJS.js",
