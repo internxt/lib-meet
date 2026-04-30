@@ -628,6 +628,7 @@ export default class JitsiLocalTrack extends JitsiTrack {
         this._originalStream = this.stream;
         this._setStream(this._streamEffect.startEffect(this._originalStream));
         this.track = this.stream.getTracks()[0];
+        this._effectEnabled = true;
     }
 
     /**
@@ -642,6 +643,7 @@ export default class JitsiLocalTrack extends JitsiTrack {
             this._setStream(this._originalStream);
             this._originalStream = null;
             this.track = this.stream ? this.stream.getTracks()[0] : null;
+            this._effectEnabled = false;
         }
     }
 
@@ -1210,20 +1212,22 @@ export default class JitsiLocalTrack extends JitsiTrack {
         this.stopStream();
 
         const initialSettings = this.track.getSettings();
-        const constraintsToApply = {
-            ...initialSettings,
-            ...constraints
-        };
 
+        const deviceId = initialSettings?.deviceId;
         const deviceIdKey = mediaType === MediaType.AUDIO ? 'micDeviceId' : 'cameraDeviceId';
         let mediaStreamData: IStreamInfo | undefined;
 
         try {
             logger.debug(`applyConstraints for track ${this} with constraints: ${JSON.stringify(constraints)}`);
 
+            const constraintsToApply = {
+                ...initialSettings,
+                ...constraints
+            };
+
             [ mediaStreamData ] = await RTCUtils.obtainAudioAndVideoPermissions({
                 constraints: { [mediaType]: constraintsToApply },
-                [deviceIdKey]: constraintsToApply.deviceId,
+                ...(deviceId && { [deviceIdKey]: deviceId }),
                 devices: [ mediaType ]
             });
 
@@ -1241,7 +1245,7 @@ export default class JitsiLocalTrack extends JitsiTrack {
 
             [ mediaStreamData ] = await RTCUtils.obtainAudioAndVideoPermissions({
                 constraints: { [mediaType]: initialSettings },
-                [deviceIdKey]: constraintsToApply.deviceId,
+                ...(deviceId && { [deviceIdKey]: deviceId }),
                 devices: [ mediaType ]
             });
         }
