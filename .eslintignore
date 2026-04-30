@@ -1,5 +1,5 @@
 # The build artifacts of the lib-jiti-meet project.
-lib-jitsi-meet.*
+lib-meet.*
 dist/
 types/
 

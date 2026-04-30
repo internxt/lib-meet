@@ -34,7 +34,7 @@ export default class E2EEcontext extends Listenable {
 
     private _initializeWorker(): Worker {
         this.scriptEl = document.querySelector<HTMLScriptElement>(
-            'script[src*="lib-jitsi-meet"]',
+            'script[src*="lib-meet"]',
         );
         let baseUrl = '';
 
@@ -44,7 +44,7 @@ export default class E2EEcontext extends Listenable {
             baseUrl = `${this.scriptEl.src.substring(0, idx)}/`;
         }
 
-        let workerUrl = `${baseUrl}lib-jitsi-meet.e2ee-worker.js`;
+        let workerUrl = `${baseUrl}lib-meet.e2ee-worker.js`;
 
         if (baseUrl && baseUrl !== '/') {
             const workerBlob = new Blob([ `importScripts("${workerUrl}");` ], {

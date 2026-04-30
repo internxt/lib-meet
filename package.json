@@ -4,14 +4,13 @@
   "description": "JS library for accessing Jitsi server side deployments",
   "repository": {
     "type": "git",
-    "url": "git://github.com/jitsi/lib-meet"
+    "url": "git://github.com/internxt/lib-meet"
   },
   "keywords": [
     "jingle",
     "webrtc",
     "xmpp",
-    "browser",
-    "jitsi"
+    "browser"
   ],
   "author": "",
   "readmeFilename": "README.md",
