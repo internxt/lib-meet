@@ -1,11 +1,6 @@
-# Jitsi Meet API library
+# Meet library
 
-You can use Jitsi Meet API to create Jitsi Meet video conferences with a custom GUI.
-
-## Installation
-
-- [Installation guide](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-ljm-api/#installation)
-- [Checkout the example](https://github.com/jitsi/ljm-getting-started)
+This is a customized fork of lib-jitsi-meet library for Internext Meet <https://meet.internxt.com/>.
 
 ## Building the sources
 
@@ -24,7 +19,7 @@ and to run unit tests:
 ```
 npm test
 ```
-if you need to rebuild lib-jitsi-meet.min.js
+if you need to rebuild lib-meet.min.js
 ```
 npm run build
 ```
@@ -33,13 +28,9 @@ Both linting and units will also be done by a pre-commit hook.
 
 ## How to run and test the library locally:
 
-To test this library, you will need <https://github.com/jitsi/jitsi-meet>. There is a pretty good tutorial in jitsi docs <https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-web-jitsi-meet>.
-
-Here is a resume of how you can run your own environment:
-
 1. Create a folder called meet or whatever you want to call this project.
 2. Clone this repository.
-3. Run `cd lib-jitsi-meet` to move to the folder.
+3. Run `cd lib-meet` to move to the folder.
 4. Run the commands below to create a link to your local library and build it.  
 
     ```
@@ -49,16 +40,16 @@ Here is a resume of how you can run your own environment:
     ```
 
 5. Run `cd ..`
-6. Go to <https://github.com/jitsi/jitsi-meet> and clone the repository.
-7. Run `cd jitsi-meet`
-8. Run `npm link lib-jitsi-meet`
+6. Go to <https://github.com/internxt/meet-web/> and clone the repository.
+7. Run `cd meet-web`
+8. Run `npm link lib-meet`
     ```
-    npm link lib-jitsi-meet 
-    npm install
-    make dev
+    npm link lib-meet 
+    yarn
+    yarn start
     ```
 
-If you want to make changes to only lib-jitsi-meet, you need to run `npm run build` and restart the `make dev` process. Otherwise, the changes you made to the library are not going to be shown in the app.
+If you want to make changes to only lib-meet, you need to run `npm run build` and restart the `yarn start` process. Otherwise, the changes you made to the library are not going to be shown in the app.
 
 ## Publishing to releases
 
@@ -75,20 +66,20 @@ Update the `package.json "version"` field to the next release number (e.g. from 
 ### Step 2: Generate the npm package
 ```
 npm install      # ensure dependencies are up to date
-npm pack         # creates a .tgz bundle (e.g. lib-jitsi-meet-1.2.4.tgz)
+npm pack         # creates a .tgz bundle (e.g. lib-meet-1.2.4.tgz)
 ```
 ### Step 3: Generate the npm package
-In your draft release on GitHub, upload the generated lib-jitsi-meet-1.2.4.tgz under Attach binaries by dropping them here or selecting them.
+In your draft release on GitHub, upload the generated lib-meet-1.2.4.tgz under Attach binaries by dropping them here or selecting them.
 
 ### Step 5: Publish the release
 With the .tgz attached, click Publish release.
 
 ### Step 6: Update downstream dependency
-In the internxt-meet repo’s package.json, change the lib-jitsi-meet entry to the new tarball URL:
+In the internxt-meet repo’s package.json, change the lib-meet entry to the new tarball URL:
 
 ```json
 "dependencies": {
-  "lib-jitsi-meet": "https://github.com/internxt/lib-jitsi-meet/releases/download/v1.2.4/lib-jitsi-meet-1.2.4.tgz",
+  "lib-meet": "https://github.com/internxt/lib-meet/releases/download/v1.2.4/lib-meet-1.2.4.tgz",
   // … other deps …
 }
 ```
