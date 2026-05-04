@@ -12,7 +12,7 @@ module.exports = (_env, argv) => {
     return [
         { ...config,
             entry: {
-                'lib-jitsi-meet': './index.js'
+                'lib-meet': './index.js'
             },
             output: { ...config.output,
                 library: 'JitsiMeetJS',
@@ -28,7 +28,7 @@ module.exports = (_env, argv) => {
                 minimize: false
             },
             output: {
-                filename: 'lib-jitsi-meet.e2ee-worker.js',
+                filename: 'lib-meet.e2ee-worker.js',
                 path: path.join(process.cwd(), 'dist', 'umd')
             },
             resolve: config.resolve

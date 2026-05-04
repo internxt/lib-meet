@@ -26,7 +26,7 @@
     "**/*.spec.ts",
     "*.conf*.js",
     "index.js",
-    "lib-jitsi-meet.*.js",
+    "lib-meet.*.js",
     "webpack*.js",
   ],
   "typedocOptions": {
